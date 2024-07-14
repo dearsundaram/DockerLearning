@@ -28,6 +28,10 @@ docker container exec -it <container name> bash
 To go inside a new container which we gonna run,
 docker container run -it <container name> <shell>
 
+To go inside a container which is not running in detached mode
+docker container attach <running container name/ID>
+Press ctrl+q or ctrl p to exit the container without stopping it
+
 To check the port to which the container is listening to 
 docker container port <container name>
 
