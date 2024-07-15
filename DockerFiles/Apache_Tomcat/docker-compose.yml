@@ -1,0 +1,24 @@
+version: '3'
+services:
+  apache:
+    image: httpd
+    ports:
+      - "80:80"
+    volumes:
+      - './apache-content:/usr/local/apache2/conf'
+    depends_on:
+      - tomcat
+    networks:
+      - apache_tomcat_NW
+  
+  tomcat:
+    image: tomcat
+    volumes:
+      - './tomcat-content/conf:/usr/local/tomcat/conf'
+      - './tomcat-content/webapps-tomcat/webapps:/usr/local/tomcat/webapps'
+    networks:
+      - apache_tomcat_NW
+
+networks:
+  apache_tomcat_NW:
+     driver: bridge
